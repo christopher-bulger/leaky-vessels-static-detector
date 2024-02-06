@@ -84,6 +84,7 @@ func GetJson(url string, token string) (string, error){
 }
 
 func PostJson(url string, body string, token string) (string, error) {
+	log.Debug("request body: ", body)
 	bodyReader := bytes.NewReader([]byte(body))
 	req, err := http.NewRequest(http.MethodPost, url, bodyReader)
 	if err != nil {
