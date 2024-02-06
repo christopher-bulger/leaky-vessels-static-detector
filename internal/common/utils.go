@@ -95,11 +95,7 @@ func PostJson(url string, body string, token string) (string, error) {
 		req.Header.Set("Authorization", "Bearer " + token)
 	}
   
-	client := http.Client{
-	   Timeout: 30 * time.Second,
-	}
-  
-	res, err := client.Do(req)
+	res, err := http.DefaultClient.Do(req)
 	resBody, err := io.ReadAll(res.Body)
 	if err != nil {
 		errMsg := fmt.Sprintf("Could not read response body: %s\n", err)
